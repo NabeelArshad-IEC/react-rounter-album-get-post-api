@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Container, Row, Col, Card, CardImg, CardBody, CardTitle } from 'reactstrap';
 
 const AlbumDetails = () => {
   const { albumId } = useParams();
@@ -14,17 +14,21 @@ const AlbumDetails = () => {
   }, [albumId]);
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1 style={{ marginBottom: '20px' }}>Album Details</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <Container>
+      <h1 className="text-center my-4">Album Details</h1>
+      <Row>
         {photos.map((photo) => (
-          <div key={photo.id} style={{ margin: '10px', textAlign: 'center' }}>
-            <img src={photo.thumbnailUrl} alt={photo.title} style={{ width: '200px' }} />
-            <p style={{ marginTop: '5px' }}>{photo.title}</p>
-          </div>
+          <Col md="3" key={photo.id} className="mb-4">
+            <Card>
+              <CardImg top width="100%" src={photo.thumbnailUrl} alt={photo.title} />
+              <CardBody>
+                <CardTitle tag="h5" className="text-center" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{photo.title}</CardTitle>
+              </CardBody>
+            </Card>
+          </Col>
         ))}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
