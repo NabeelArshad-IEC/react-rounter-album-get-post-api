@@ -17,7 +17,7 @@ const Posts = () => {
       {posts.map((post) => (
         <Card key={post.id} className="my-3">
           <CardBody>
-            <CardTitle tag="h5">{post.title}</CardTitle>
+            <CardTitle tag="h5"> ID: {post.id} - {post.title}</CardTitle>
             <p className="card-text">{post.body}</p>
           </CardBody>
         </Card>
