@@ -1,6 +1,6 @@
-// components/Albums.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, CardImg, CardBody, CardTitle, Container, Row, Col } from 'reactstrap';
 
 const Albums = () => {
   const [albums, setAlbums] = useState([]);
@@ -13,16 +13,23 @@ const Albums = () => {
   }, []);
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1 style={{ marginBottom: '20px' }}>Albums</h1>
-      {albums.map((album) => (
-        <div key={album.id} style={{ marginBottom: '10px' }}>
-          <Link to={`/album/${album.id}`} style={{ textDecoration: 'none' }}>
-            <h3 style={{ color: '#333', cursor: 'pointer' }}>{album.title}</h3>
-          </Link>
-        </div>
-      ))}
-    </div>
+    <Container>
+      <h1>Albums</h1>
+      <Row>
+        {albums.map((album) => (
+          <Col md="4" key={album.id}>
+            <Link to={`/album/${album.id}`}>
+              <Card>
+                <CardImg top width="100%" src={`https://picsum.photos/200/300?random=${album.id}`} alt="Album" />
+                <CardBody>
+                  <CardTitle>{album.title}</CardTitle>
+                </CardBody>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

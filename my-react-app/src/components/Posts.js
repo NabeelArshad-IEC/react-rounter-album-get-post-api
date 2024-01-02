@@ -1,5 +1,5 @@
-// components/Posts.js
 import React, { useState, useEffect } from 'react';
+import { Container, Card, CardBody, CardTitle } from 'reactstrap';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -12,15 +12,17 @@ const Posts = () => {
   }, []);
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1 style={{ marginBottom: '20px' }}>Posts</h1>
+    <Container>
+      <h1>Posts</h1>
       {posts.map((post) => (
-        <div key={post.id} style={{ marginBottom: '15px' }}>
-          <h3 style={{ color: '#333' }}>{post.title}</h3>
-          <p style={{ color: '#666' }}>{post.body}</p>
-        </div>
+        <Card key={post.id} className="my-3">
+          <CardBody>
+            <CardTitle tag="h5">{post.title}</CardTitle>
+            <p className="card-text">{post.body}</p>
+          </CardBody>
+        </Card>
       ))}
-    </div>
+    </Container>
   );
 };
 
